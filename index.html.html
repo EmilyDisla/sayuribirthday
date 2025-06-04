@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quince Años - Fondo del Mar</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Cinzel:wght@400;600&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #001a2e 0%, #003366 25%, #004080 50%, #0066cc 75%, #4da6ff 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px 0;
+        }
+        
+        .ocean-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -2;
+            background: radial-gradient(ellipse at center bottom, #004080 0%, #001a2e 100%);
+        }
+        
+        .bubbles {
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+        }
+        
+        .bubble:nth-child(1) { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: 2s; }
+        .bubble:nth-child(3) { width: 25px; height: 25px; left: 35%; animation-delay: 4s; }
+        .bubble:nth-child(4) { width: 18px; height: 18px; left: 50%; animation-delay: 6s; }
+        .bubble:nth-child(5) { width: 22px; height: 22px; left: 70%; animation-delay: 1s; }
+        .bubble:nth-child(6) { width: 16px; height: 16px; left: 85%; animation-delay: 3s; }
+        .bubble:nth-child(7) { width: 30px; height: 30px; left: 75%; animation-delay: 5s; }
+        .bubble:nth-child(8) { width: 12px; height: 12px; left: 25%; animation-delay: 7s; }
+        .bubble:nth-child(9) { width: 28px; height: 28px; left: 65%; animation-delay: 2.5s; }
+        .bubble:nth-child(10) { width: 14px; height: 14px; left: 45%; animation-delay: 4.5s; }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+            padding: 40px 20px;
+        }
+        
+        .invitation-container {
+            width: 100%;
+            max-width: 500px;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)),
+                url('https://i.imgur.com/yNpeezd.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 30px;
+            padding: 180px 30px 40px 30px;
+            box-shadow: 
+                0 25px 50px rgba(0, 26, 46, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            position: relative;
+            backdrop-filter: blur(1px);
+            border: 2px solid rgba(77, 166, 255, 0.4);
+            animation: gentle-float 6s ease-in-out infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .coral-decoration {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 40px;
+            color: #ff6b9d;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .theme-line {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: #ffffff;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-weight: 400;
+            text-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.8),
+                0 0 10px rgba(77, 166, 255, 0.5);
+        }
+        
+        .details {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(77, 166, 255, 0.25));
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #001a2e;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .detail-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+        
+        .detail-text {
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #004080;
+            margin-right: 8px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.2);
+        }
+        
+        .rsvp-note {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #001a2e;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 15px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .action-buttons {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-calendar {
+            background: linear-gradient(135deg, #4da6ff, #0066cc);
+            color: white;
+        }
+        
+        .btn-location {
+            background: linear-gradient(135deg, #ff6b9d, #e91e63);
+            color: white;
+        }
+        
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+        
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .schedule-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 26, 46, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .schedule-content {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(240, 248, 255, 0.9));
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 450px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0, 26, 46, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+        }
+        
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(77, 166, 255, 0.2);
+        }
+        
+        .schedule-title {
+            font-family: 'Cinzel', serif;
+            font-size: 24px;
+            color: #004080;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .schedule-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 18px;
+            color: #ff6b9d;
+            font-style: italic;
+        }
+        
+        .schedule-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, rgba(77, 166, 255, 0.1), rgba(255, 107, 157, 0.1));
+            border-radius: 12px;
+            border-left: 4px solid #4da6ff;
+        }
+        
+        .schedule-time {
+            font-family: 'Cinzel', serif;
+            font-weight: 600;
+            color: #004080;
+            font-size: 16px;
+            min-width: 70px;
+            margin-right: 15px;
+        }
+        
+        .schedule-activity {
+            flex: 1;
+        }
+        
+        .activity-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #001a2e;
+            margin-bottom: 5px;
+        }
+        
+        .activity-description {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #004080;
+            cursor: pointer;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 107, 157, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .decorative-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(77, 166, 255, 0.2) 0%, rgba(255, 107, 157, 0.2) 100%);
+            clip-path: polygon(0 50%, 100% 80%, 100% 100%, 0 100%);
+        }
+        
+        .seashell {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #ff6b9d;
+            opacity: 0.6;
+            animation: gentle-rotation 8s ease-in-out infinite;
+        }
+        
+        .starfish {
+            position: absolute;
+            bottom: 100px;
+            left: 20px;
+            font-size: 20px;
+            color: #4da6ff;
+            opacity: 0.6;
+            animation: gentle-rotation 10s ease-in-out infinite reverse;
+        }
+        
+        .seahorse {
+            position: absolute;
+            top: 80px;
+            left: 30px;
+            font-size: 22px;
+            color: #ff9800;
+            opacity: 0.7;
+            animation: gentle-sway 6s ease-in-out infinite;
+        }
+        
+        .dolphin {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            font-size: 18px;
+            color: #2196f3;
+            opacity: 0.6;
+            animation: gentle-swim 12s ease-in-out infinite;
+        }
+        
+        .octopus {
+            position: absolute;
+            bottom: 160px;
+            right: 30px;
+            font-size: 20px;
+            color: #9c27b0;
+            opacity: 0.6;
+            animation: gentle-pulse 4s ease-in-out infinite;
+        }
+        
+        .jellyfish {
+            position: absolute;
+            top: 120px;
+            right: 40px;
+            font-size: 16px;
+            color: #e1bee7;
+            opacity: 0.7;
+            animation: gentle-float-marine 7s ease-in-out infinite;
+        }
+        
+        .fish {
+            position: absolute;
+            bottom: 200px;
+            left: 40px;
+            font-size: 18px;
+            color: #ff5722;
+            opacity: 0.6;
+            animation: gentle-swim 9s ease-in-out infinite reverse;
+        }
+        
+        .anchor {
+            position: absolute;
+            bottom: 120px;
+            right: 60px;
+            font-size: 16px;
+            color: #607d8b;
+            opacity: 0.5;
+            animation: gentle-sway 8s ease-in-out infinite;
+        }
+        
+        @keyframes gentle-rotation {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+        }
+        
+        @keyframes gentle-sway {
+            0%, 100% { transform: translateX(0px) rotate(0deg); }
+            50% { transform: translateX(5px) rotate(5deg); }
+        }
+        
+        @keyframes gentle-swim {
+            0%, 100% { transform: translateX(0px) translateY(0px); }
+            50% { transform: translateX(10px) translateY(-5px); }
+        }
+        
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        @keyframes gentle-float-marine {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        
+        .pearl-accent {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, #ffffff 0%, #f0f8ff 100%);
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pearl-1 { top: 60px; left: 60px; animation: shimmer 3s ease-in-out infinite; }
+        .pearl-2 { top: 120px; right: 40px; animation: shimmer 3s ease-in-out infinite 1s; }
+        .pearl-3 { bottom: 140px; right: 80px; animation: shimmer 3s ease-in-out infinite 2s; }
+        .pearl-4 { top: 160px; left: 50px; animation: shimmer 3s ease-in-out infinite 2.5s; }
+        .pearl-5 { bottom: 180px; left: 70px; animation: shimmer 3s ease-in-out infinite 1.5s; }
+        
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .water-ripple {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(77, 166, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: ripple 4s ease-in-out infinite;
+        }
+        
+        @keyframes ripple {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+            50% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+        }
+        
+        .special-note {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(77, 166, 255, 0.2)); 
+            border-radius: 15px; 
+            padding: 20px; 
+            margin-top: 20px; 
+            border: 1px solid rgba(255, 255, 255, 0.5); 
+            text-align: center;
+        }
+        
+        .special-note-title {
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 16px; 
+            color: #004080; 
+            font-weight: 600; 
+            margin-bottom: 8px; 
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        .special-note-text {
+            font-family: 'Cormorant Garamond', serif; 
+            font-size: 15px; 
+            color: #001a2e; 
+            line-height: 1.4; 
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.3);
+        }
+        
+        @media (max-width: 480px) {
+            .main-container {
+                padding: 20px 10px;
+            }
+            
+            .invitation-container {
+                padding: 160px 20px 30px 20px;
+                margin: 0;
+            }
+            
+            .schedule-modal {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ocean-background"></div>
+    
+    <div class="bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+    
+    <div class="main-container">
+        <div class="invitation-container">
+            <div class="decorative-elements">
+                <div class="water-ripple"></div>
+                <div class="wave"></div>
+                <div class="seashell">🐚</div>
+                <div class="starfish">⭐</div>
+                <div class="seahorse">🐴</div>
+                <div class="dolphin">🐬</div>
+                <div class="octopus">🐙</div>
+                <div class="jellyfish">🪼</div>
+                <div class="fish">🐠</div>
+                <div class="anchor">⚓</div>
+                <div class="pearl-accent pearl-1"></div>
+                <div class="pearl-accent pearl-2"></div>
+                <div class="pearl-accent pearl-3"></div>
+                <div class="pearl-accent pearl-4"></div>
+                <div class="pearl-accent pearl-5"></div>
+            </div>
+            
+
+            
+            <div class="header">
+            </div>
+            
+            <div class="details">
+                <div class="detail-item">
+                    <div class="detail-icon">📅</div>
+                    <div class="detail-text">
+                        <span class="detail-label">Fecha:</span>
+                        Sábado 12 de Julio
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">🕒</div>
+                    <div class="detail-text">
+                        <span class="detail-label">Hora:</span>
+                        3:00 PM - 9:00 PM
+                    </div>
+                </div>
+                
+                <div class="detail-item">
+                    <div class="detail-icon">✨</div>
+                    <div class="detail-text">
+                        <span class="detail-label">Código de vestimenta:</span>
+                        Semiformal
+                    </div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="btn btn-calendar" onclick="showEventSchedule()">
+                    <span class="btn-icon">📅</span>
+                    Ver Agenda del Evento
+                </button>
+                
+                <a href="https://maps.apple.com/place?address=Calle%20Daniel%20Brewer,%20Santo%20Domingo,%20Rep%C3%BAblica%20Dominicana&coordinate=18.468925,-69.776810&name=Calle%20Daniel%20Brewer&map=explore" target="_blank" class="btn btn-location">
+                    <span class="btn-icon">📍</span>
+                    Ver Ubicación en Mapa
+                </a>
+                
+                <a href="https://wa.me/18492642604?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%20XV%20años%20de%20Sayuri%20🌊✨" target="_blank" class="btn btn-whatsapp">
+                    <span class="btn-icon">💬</span>
+                    Confirmar por WhatsApp
+                </a>
+            </div>
+            
+            <div class="rsvp-note">
+                "Tu presencia hará de esta celebración un momento más especial"
+            </div>
+            
+            <div class="special-note">
+                <div class="special-note-title">💙 Nota Especial 💙</div>
+                <div class="special-note-text">
+                    La fiesta será mejor con tu bebida favorita. No olvides traerla! Nosotros nos encargamos del resto🥂
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para la Agenda -->
+    <div class="schedule-modal" id="scheduleModal">
+        <div class="schedule-content">
+            <button class="close-btn" onclick="closeSchedule()">&times;</button>
+            
+            <div class="schedule-header">
+                <div class="schedule-title">Agenda del Evento</div>
+                <div class="schedule-subtitle">Un día completo de diversión marina</div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">3:00pm</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">🚪 Recepción de Invitados</div>
+                    <div class="activity-description">3:00pm-4:00pm</div>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">4:00PM</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">👑 Entrada de la Quinceañera</div>
+                    <div class="activity-description">4:00pm-5:00pm</div>
+                </div>
+            </div>
+
+            <div class="schedule-item">
+                <div class="schedule-time">5:00 PM</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">📸 Espacio Fotográfico</div>
+                    <div class="activity-description">5:00pm - 5:30pm</div>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">6:00 PM</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">🏊‍♀️ Inicio Pool Party</div>
+                    <div class="activity-description">Diversión y refrescante pool party</div>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">7:00pm</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">🔥 Parrillada y Sorpresas</div>
+                    <div class="activity-description">Deliciosa parrillada con sorpresas especiales</div>
+                </div>
+            </div>
+            
+            <div class="schedule-item">
+                <div class="schedule-time">9:00pm</div>
+                <div class="schedule-activity">
+                    <div class="activity-name">🎂 Brindis y Pastel</div>
+                    <div class="activity-description">Momento especial del pastel y brindis final</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function showEventSchedule() {
+            document.getElementById('scheduleModal').style.display = 'flex';
+        }
+        
+        function closeSchedule() {
+            document.getElementById('scheduleModal').style.display = 'none';
+        }
+        
+        // Cerrar modal al hacer clic fuera del contenido
+        document.getElementById('scheduleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeSchedule();
+            }
+        });
+    </script>
+</body>
+</html>
